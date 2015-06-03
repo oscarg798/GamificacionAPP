@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">GamificacionApp</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO messages-->
+    <string name="acept_label">aceptar</string>
+    <string name="alert_default_title">Alerta</string>
+    <string name="error_default_message">Error </string>
+
+    <!-- TODO keys -->
+    <string name="result_key">response</string>
+    <string name="message_key">message</string>
+    <string name="name_key">name</string>
+    <string name="id_number_key">idNumber</string>
+    <string name="startDate_key">startDate</string>
+    <string name="endDate_key">endDate</string>
+    <string name="description_key">description</string>
+    <string name="activity_has_concept_key">activityHasConcept</string>
+    <string name="concept_key">concept</string>
+    <string name="object_id_key">id</string>
+
+    <!--TODO URLS-->
+    <string name="base_url">http://192.168.1.52:1337</string>
+    <string name="activities_index_url">/activity/mobileIndex</string>
+
+
+</resources>
