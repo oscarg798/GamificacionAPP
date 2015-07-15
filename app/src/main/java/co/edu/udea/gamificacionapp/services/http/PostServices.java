@@ -51,16 +51,30 @@ public class PostServices extends AsyncTask<String, String, Boolean> {
     /**
      * Lista de parametros a enviar en la peticion
      */
-    private List<CouplePostParam> paramsList;
+    private static List<CouplePostParam> paramsList;
 
     /**
      * Dao que invoca esta clase
      */
-    private AbstractDao abstractDao;
+    private static AbstractDao abstractDao;
 
-    public PostServices(AbstractDao abstractDao, List<CouplePostParam> paramsList) {
-        this.abstractDao = abstractDao;
-        this.paramsList = paramsList;
+    /**
+     * Intancia del servicio
+     */
+    public static PostServices instance;
+
+    private PostServices() {
+
+    }
+
+    public static PostServices getInsance(AbstractDao mAbstractDao, List<CouplePostParam> mParamsList) {
+        if (instance == null)
+            instance = new PostServices();
+
+        abstractDao = mAbstractDao;
+        paramsList = mParamsList;
+
+        return instance;
     }
 
     @Override
@@ -76,7 +90,6 @@ public class PostServices extends AsyncTask<String, String, Boolean> {
 
         }
         try {
-
 
 
             /**
@@ -104,7 +117,7 @@ public class PostServices extends AsyncTask<String, String, Boolean> {
             /**
              * Añadimos un tiempo de conexion maximo
              */
-            httpURLConnection.setConnectTimeout(10000);
+            httpURLConnection.setConnectTimeout(20000);
 
             /**
              * Indicamos que es post ??

@@ -3,6 +3,7 @@ package co.edu.udea.gamificacionapp.factories.interfaces;
 import android.content.Context;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -13,5 +14,5 @@ import co.edu.udea.gamificacionapp.entities.core.Activity;
  */
 public interface IActivityFactory {
 
-    List<Activity> getActivitiesFromJsonArray(JSONArray jsonArray, Context context);
+    List<Activity> getActivitiesFromJsonObject(JSONObject jsonObject, Context context);
 }

@@ -4,13 +4,27 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!--- TODO Activity Show Activity Info-->
+    <string name="id_number_label">Id:</string>
+    <string name="name_label">Nombre: </string>
+    <string name="description_label">Descripción: </string>
+    <string name="start_date_label">Fecha de inicio:</string>
+    <string name="end_date_label">Fecha de Finalización</string>
+    <string name="concept_label">concepto</string>
+    <string name="fase_label">Fase</string>
+
+
+
     <!-- TODO messages-->
     <string name="acept_label">aceptar</string>
     <string name="alert_default_title">Alerta</string>
     <string name="error_default_message">Error </string>
 
+
+
+
     <!-- TODO keys -->
-    <string name="result_key">response</string>
+    <string name="result_key">result</string>
     <string name="message_key">message</string>
     <string name="name_key">name</string>
     <string name="id_number_key">idNumber</string>
@@ -21,9 +35,12 @@
     <string name="concept_key">concept</string>
     <string name="object_id_key">id</string>
 
+
     <!--TODO URLS-->
-    <string name="base_url">http://192.168.1.52:1337</string>
+    <string name="base_url">http://192.168.1.52:1339</string>
     <string name="activities_index_url">/activity/mobileIndex</string>
+    <string name="get_concept_of_activity_url"></string>
+    <string name="title_activity_show_activity_info">ShowActivityInfoActivity</string>
 
 
 </resources>

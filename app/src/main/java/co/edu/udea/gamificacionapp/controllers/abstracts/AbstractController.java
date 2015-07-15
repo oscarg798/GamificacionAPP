@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.widget.ArrayAdapter;
 
 import java.util.List;
 
@@ -84,6 +85,29 @@ public abstract class AbstractController {
         getActivity().startActivity(i);
     }
 
+    public void showAlertDialogWithListView(String alertTitle, final String negativeButtonTitle,
+                                            final ArrayAdapter<String> arrayAdapter,
+                                            final DialogInterface.OnClickListener
+                                                    arrayAdapterOnclickListener) {
+
+         AlertDialog.Builder builderSingle = new AlertDialog.Builder(
+                this.getActivity());
+        builderSingle.setTitle(alertTitle);
+
+        builderSingle.setNegativeButton(negativeButtonTitle, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        builderSingle.setAdapter(arrayAdapter,
+                arrayAdapterOnclickListener);
+
+        AlertDialog dialog = builderSingle.show();
+        dialog.show();
+
+    }
 
 
     /**

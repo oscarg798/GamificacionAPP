@@ -1,13 +1,20 @@
 package co.edu.udea.gamificacionapp.presentation.activities;
 
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import co.edu.udea.gamificacionapp.R;
 import co.edu.udea.gamificacionapp.controllers.ActivitiesIndexController;
+import co.edu.udea.gamificacionapp.entities.core.Activity;
+import co.edu.udea.gamificacionapp.entities.core.Concept;
 import co.edu.udea.gamificacionapp.factories.impl.ActivityFactory;
 import co.edu.udea.gamificacionapp.presentation.adapters.ActivityCustomAdapter;
 
@@ -17,6 +24,7 @@ public class ActivitiesIndexActivity extends ActionBarActivity {
     private ActivityCustomAdapter activityCustomAdapter;
     private ListView lvActivities;
     private ActivitiesIndexController activitiesIndexController;
+    private int selectedActivityIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +35,6 @@ public class ActivitiesIndexActivity extends ActionBarActivity {
 
     public void initComponents() {
         activitiesIndexController = new ActivitiesIndexController(this);
-
         lvActivities = (ListView) findViewById(R.id.lv_activities);
         activitiesIndexController.getActivities();
 
@@ -39,7 +46,42 @@ public class ActivitiesIndexActivity extends ActionBarActivity {
                 ActivityFactory.getInstance().getActivityList());
         lvActivities.setAdapter(activityCustomAdapter);
 
+
+        lvActivities.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedActivityIndex = i;
+                Activity activity = (Activity) adapterView.getAdapter().getItem(i);
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        getApplicationContext(),
+                        R.layout.custom_select_dialog_single_choice);
+
+
+
+                for (Concept c : activity.getConceptList()) {
+                    arrayAdapter.add(c.getName());
+                }
+
+                DialogInterface.OnClickListener arrayAdapterOnClickLister
+                        = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        Concept c = ActivityFactory.getInstance().getActivityList().get(selectedActivityIndex)
+                                .getConceptList().get(i);
+
+                        Log.i("Concepto Seleccionado", c.getName());
+                    }
+                };
+
+
+                activitiesIndexController.showAlertDialogWithListView("Seleccione un Concepto",
+                        "Cancelar", arrayAdapter, arrayAdapterOnClickLister);
+            }
+        });
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
