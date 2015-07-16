@@ -23,7 +23,7 @@ public class ConceptDAO extends AbstractDao implements IConceptDAO {
 
     @Override
     public void getConcepts(List<CouplePostParam> couplePostParamList) {
-        PostServices postServices = PostServices.getInsance(this, couplePostParamList);
+        PostServices postServices = new PostServices(this, couplePostParamList);
         postServices.execute(getAbstractController().getActivity()
                 .getString(R.string.base_url) + getAbstractController().getActivity()
                 .getString(R.string.base_url));

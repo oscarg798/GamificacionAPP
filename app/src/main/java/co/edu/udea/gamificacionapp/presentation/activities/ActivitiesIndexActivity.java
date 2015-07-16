@@ -11,10 +11,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.udea.gamificacionapp.R;
 import co.edu.udea.gamificacionapp.controllers.ActivitiesIndexController;
 import co.edu.udea.gamificacionapp.entities.core.Activity;
 import co.edu.udea.gamificacionapp.entities.core.Concept;
+import co.edu.udea.gamificacionapp.entities.utils.CouplePostParam;
 import co.edu.udea.gamificacionapp.factories.impl.ActivityFactory;
 import co.edu.udea.gamificacionapp.presentation.adapters.ActivityCustomAdapter;
 
@@ -57,7 +61,6 @@ public class ActivitiesIndexActivity extends ActionBarActivity {
                         R.layout.custom_select_dialog_single_choice);
 
 
-
                 for (Concept c : activity.getConceptList()) {
                     arrayAdapter.add(c.getName());
                 }
@@ -70,7 +73,23 @@ public class ActivitiesIndexActivity extends ActionBarActivity {
                         Concept c = ActivityFactory.getInstance().getActivityList().get(selectedActivityIndex)
                                 .getConceptList().get(i);
 
-                        Log.i("Concepto Seleccionado", c.getName());
+                        String conceptID = c.getObjectId();
+                        String activityID = ActivityFactory.getInstance().getActivityList()
+                                .get(selectedActivityIndex).getObjectId();
+
+                        List<CouplePostParam> couplePostParams = new ArrayList<>();
+                        CouplePostParam couplePostParam = new CouplePostParam();
+                        couplePostParam.setKey("activityID");
+                        couplePostParam.setParam(activityID);
+                        couplePostParams.add(couplePostParam);
+
+                        couplePostParam = new CouplePostParam();
+                        couplePostParam.setKey("conceptID");
+                        couplePostParam.setParam(conceptID);
+                        couplePostParams.add(couplePostParam);
+
+                        activitiesIndexController.changeActivityWithExtrasList(PhasesIndexActivity.class,
+                                couplePostParams);
                     }
                 };
 

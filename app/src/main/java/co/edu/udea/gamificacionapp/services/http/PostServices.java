@@ -51,31 +51,22 @@ public class PostServices extends AsyncTask<String, String, Boolean> {
     /**
      * Lista de parametros a enviar en la peticion
      */
-    private static List<CouplePostParam> paramsList;
+    private  List<CouplePostParam> paramsList;
 
     /**
      * Dao que invoca esta clase
      */
-    private static AbstractDao abstractDao;
+    private  AbstractDao abstractDao;
 
-    /**
-     * Intancia del servicio
-     */
-    public static PostServices instance;
 
-    private PostServices() {
+
+    public PostServices(AbstractDao mAbstractDao, List<CouplePostParam> mParamsList) {
+        this.abstractDao = mAbstractDao;
+        this.paramsList= mParamsList;
 
     }
 
-    public static PostServices getInsance(AbstractDao mAbstractDao, List<CouplePostParam> mParamsList) {
-        if (instance == null)
-            instance = new PostServices();
 
-        abstractDao = mAbstractDao;
-        paramsList = mParamsList;
-
-        return instance;
-    }
 
     @Override
     protected Boolean doInBackground(String... strings) {

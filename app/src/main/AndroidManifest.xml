@@ -22,6 +22,10 @@
             android:name=".presentation.activities.ShowActivityInfoActivity"
             android:label="@string/title_activity_show_activity_info" >
         </activity>
+        <activity
+            android:name=".presentation.activities.PhasesIndexActivity"
+            android:label="@string/title_activity_phases_index" >
+        </activity>
     </application>
 
 </manifest>

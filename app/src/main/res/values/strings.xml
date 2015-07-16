@@ -34,6 +34,13 @@
     <string name="activity_has_concept_key">activityHasConcept</string>
     <string name="concept_key">concept</string>
     <string name="object_id_key">id</string>
+    <string name="phase_activity_id_key">activity</string>
+    <string name="phase_identifier_key">identifier</string>
+    <string name="phase_start_date_key">startDate</string>
+    <string name="phase_end_date_key">endDate</string>
+    <string name="question_statement_key">statement</string>
+    <string name="question_phase_id_key">phase</string>
+    <string name="phase_quesions_key">question</string>
 
 
     <!--TODO URLS-->
@@ -41,6 +48,8 @@
     <string name="activities_index_url">/activity/mobileIndex</string>
     <string name="get_concept_of_activity_url"></string>
     <string name="title_activity_show_activity_info">ShowActivityInfoActivity</string>
+    <string name="phases_index_url">/phase/getphasesactivity</string>
+    <string name="title_activity_phases_index">PhasesIndexActivity</string>
 
 
 </resources>

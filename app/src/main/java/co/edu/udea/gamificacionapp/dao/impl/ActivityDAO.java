@@ -27,7 +27,7 @@ public class ActivityDAO extends AbstractDao implements IActivityDAO {
     public void getActivities(List<CouplePostParam> couplePostParamList) {
         getAbstractController().showProgressDialog("alerta", "espere por favor");
 
-        PostServices postServices = PostServices.getInsance(this, couplePostParamList);
+        PostServices postServices = new PostServices(this, couplePostParamList);
         postServices.execute(getAbstractController().getActivity()
                 .getString(R.string.base_url) + getAbstractController().getActivity()
                 .getString(R.string.activities_index_url));
