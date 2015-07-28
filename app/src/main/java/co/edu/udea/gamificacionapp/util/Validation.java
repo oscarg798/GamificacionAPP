@@ -104,7 +104,7 @@ public class Validation {
             return false;
         if (s.equals(""))
             return false;
-        if (s.length() < 4)
+        if (s.length() < 5)
             return false;
         return true;
 

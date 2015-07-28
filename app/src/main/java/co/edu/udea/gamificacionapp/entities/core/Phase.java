@@ -13,9 +13,11 @@ public class Phase implements Serializable {
     private String startDate;
     private String endDate;
     private String description;
+    private String phaseType;
     private String activityID;
     private List<Question> questionList;
     private String objectID;
+    private Concept concept;
 
     public String getIdentifier() {
         return identifier;
@@ -79,5 +81,21 @@ public class Phase implements Serializable {
 
     public void setQuestionList(List<Question> questionList) {
         this.questionList = questionList;
+    }
+
+    public String getPhaseType() {
+        return phaseType;
+    }
+
+    public void setPhaseType(String phaseType) {
+        this.phaseType = phaseType;
+    }
+
+    public Concept getConcept() {
+        return concept;
+    }
+
+    public void setConcept(Concept concept) {
+        this.concept = concept;
     }
 }

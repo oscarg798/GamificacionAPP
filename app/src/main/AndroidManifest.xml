@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="co.edu.udea.gamificacionapp" >
+    package="co.edu.udea.gamificacionapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -8,10 +8,28 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".presentation.activities.ActivitiesIndexActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
+
+        </activity>
+        <activity
+            android:name=".presentation.activities.ShowActivityInfoActivity"
+            android:label="@string/title_activity_show_activity_info"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name=".presentation.activities.PhasesIndexActivity"
+            android:label="@string/title_activity_phases_index"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name=".presentation.activities.QuizActivity"
+            android:label="@string/title_activity_quiz"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name=".presentation.activities.LoginActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,13 +37,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.activities.ShowActivityInfoActivity"
-            android:label="@string/title_activity_show_activity_info" >
-        </activity>
-        <activity
-            android:name=".presentation.activities.PhasesIndexActivity"
-            android:label="@string/title_activity_phases_index" >
-        </activity>
+            android:name=".presentation.activities.SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:launchMode="singleTask"></activity>
     </application>
 
 </manifest>

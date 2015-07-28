@@ -1,12 +1,16 @@
 package co.edu.udea.gamificacionapp.dao.abstracts;
 
 
+import android.content.DialogInterface;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import co.edu.udea.gamificacionapp.R;
+import co.edu.udea.gamificacionapp.controllers.QuizActivityController;
 import co.edu.udea.gamificacionapp.controllers.abstracts.AbstractController;
+import co.edu.udea.gamificacionapp.presentation.activities.PhasesIndexActivity;
 import co.edu.udea.gamificacionapp.util.ErrorMessageHandler;
 
 
@@ -70,7 +74,24 @@ public abstract class AbstractDao {
                     try {
                         String message = jsonObjectResponse.getString(getAbstractController().getActivity()
                                 .getResources().getString(R.string.message_key));
+                        if(message!=null && message.equals("600")){
 
+                            DialogInterface.OnClickListener onClickListener =
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            getAbstractController().changeActivityWithExtrasList(
+                                                    PhasesIndexActivity.class,null
+                                            );
+                                        }
+                                    };
+
+                            if (getAbstractController() instanceof QuizActivityController){
+                                getAbstractController().showAlertDialogWithTwoCustomOnClickListener(
+                                        "Alerta","Respuestas guardadas Correctamente",
+                                        onClickListener,null,"Aceptar",null);
+                            }
+                        }else
                         getAbstractController().showAlertDialogWithTwoCustomOnClickListener(
                                 getAbstractController().getActivity().getResources().getString(R.string.alert_default_title),
                                 ErrorMessageHandler.getMessageFromCode(message), null, null, null, null);

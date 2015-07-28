@@ -11,5 +11,7 @@ public interface IPhaseDAO  {
 
      void getPhasesFromBackEnd(List<CouplePostParam> couplePostParamList);
 
+     void sendPhaseReplies(List<CouplePostParam> couplePostParamList);
+
 
 }

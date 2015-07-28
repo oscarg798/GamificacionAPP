@@ -1,6 +1,7 @@
 package co.edu.udea.gamificacionapp.dao.impl;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -36,6 +37,16 @@ public class PhaseDAO extends AbstractDao implements IPhaseDAO {
     }
 
     @Override
+    public void sendPhaseReplies(List<CouplePostParam> couplePostParamList) {
+        getAbstractController().showProgressDialog("Alerta", "espere por favor");
+        PostServices postServices = new PostServices(this, couplePostParamList);
+        postServices.execute(getAbstractController().getActivity()
+                .getString(R.string.base_url) + getAbstractController().getActivity()
+                .getString(R.string.create_phase_replies_url));
+
+    }
+
+    @Override
     public void processJsonArrayResponse(JSONArray jsonArray) {
         super.processJsonArrayResponse(jsonArray);
         List<Phase> phaseList = PhaseFactory.getInstance().getPhasesFromJsonArray(jsonArray,
@@ -54,5 +65,10 @@ public class PhaseDAO extends AbstractDao implements IPhaseDAO {
 
         }
 
+    }
+
+    @Override
+    public void processJsonObjectResponse(JSONObject jsonObject) {
+        super.processJsonObjectResponse(jsonObject);
     }
 }

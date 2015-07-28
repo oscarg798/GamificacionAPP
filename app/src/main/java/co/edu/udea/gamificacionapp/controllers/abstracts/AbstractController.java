@@ -78,7 +78,10 @@ public abstract class AbstractController {
         Intent i = new Intent(getActivity(), destinyClass);
         if (couplePostParamList != null) {
             for (CouplePostParam couplePostParam : couplePostParamList) {
-                i.putExtra(couplePostParam.getKey(), couplePostParam.getParam());
+                if (couplePostParam.getParam() != null)
+                    i.putExtra(couplePostParam.getKey(), couplePostParam.getParam());
+                else if (couplePostParam.getObjectParam() != null)
+                    i.putExtra(couplePostParam.getKey(), couplePostParam.getObjectParam());
 
             }
         }
@@ -90,7 +93,7 @@ public abstract class AbstractController {
                                             final DialogInterface.OnClickListener
                                                     arrayAdapterOnclickListener) {
 
-         AlertDialog.Builder builderSingle = new AlertDialog.Builder(
+        AlertDialog.Builder builderSingle = new AlertDialog.Builder(
                 this.getActivity());
         builderSingle.setTitle(alertTitle);
 

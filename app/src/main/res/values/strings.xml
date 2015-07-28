@@ -14,13 +14,11 @@
     <string name="fase_label">Fase</string>
 
 
-
     <!-- TODO messages-->
     <string name="acept_label">aceptar</string>
     <string name="alert_default_title">Alerta</string>
     <string name="error_default_message">Error </string>
-
-
+    <string name="response_label">Respuesta</string>
 
 
     <!-- TODO keys -->
@@ -41,6 +39,15 @@
     <string name="question_statement_key">statement</string>
     <string name="question_phase_id_key">phase</string>
     <string name="phase_quesions_key">question</string>
+    <string name="phase_type_key">phaseType</string>
+    <string name="phase_key">phase
+    </string>
+    <string name="fullname_key">fullname</string>
+    <string name="email_key">email</string>
+
+
+    <string name="title_activity_phases_index">PhasesIndexActivity</string>
+    <string name="title_activity_quiz">QuizActivity</string>
 
 
     <!--TODO URLS-->
@@ -49,7 +56,14 @@
     <string name="get_concept_of_activity_url"></string>
     <string name="title_activity_show_activity_info">ShowActivityInfoActivity</string>
     <string name="phases_index_url">/phase/getphasesactivity</string>
-    <string name="title_activity_phases_index">PhasesIndexActivity</string>
+    <string name="create_phase_replies_url">/reply/create</string>
+    <string name="log_in_url">/user/login</string>
+    <string name="sign_up__url">/user/create</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
 
 
 </resources>

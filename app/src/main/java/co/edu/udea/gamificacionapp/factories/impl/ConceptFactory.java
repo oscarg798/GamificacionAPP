@@ -58,4 +58,23 @@ public class ConceptFactory implements IConceptFactory {
         return conceptList;
 
     }
+
+    @Override
+    public Concept getConceptFromJsonObject(JSONObject jsonObject, Context context) {
+        Concept concept = null;
+
+        try {
+            concept = new Concept();
+            concept.setName(jsonObject.getString(context.getString(R.string.name_key)));
+            concept.setDescription(jsonObject.getString(context.getString(R.string.description_key)));
+            concept.setObjectId(jsonObject.getString(context.getString(R.string.object_id_key)));
+
+        } catch (JSONException e) {
+            concept = null;
+        }
+
+        return concept;
+    }
+
+
 }

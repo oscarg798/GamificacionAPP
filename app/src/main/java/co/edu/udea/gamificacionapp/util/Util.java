@@ -1,6 +1,8 @@
 package co.edu.udea.gamificacionapp.util;
 
 
+import org.json.JSONArray;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
@@ -31,15 +33,47 @@ public class Util {
             }
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-            return data=null;
+            return data = null;
         }
 
-        if(data.equals(""))
-            return data= null;
+        if (data.equals(""))
+            return data = null;
 
-        return  data;
+        return data;
 
 
+    }
+
+    public static String createJsonArrayString(List<List<CouplePostParam>> couplePostParamList) {
+        String jsonArrayString = null;
+        for (List<CouplePostParam> couplePostParamList1 : couplePostParamList) {
+            if (jsonArrayString == null)
+                jsonArrayString = "[" + createJsonObjectString(couplePostParamList1);
+            else
+                jsonArrayString += "," + createJsonObjectString(couplePostParamList1);
+
+        }
+        if (jsonArrayString != null)
+            jsonArrayString += "]";
+
+        return jsonArrayString;
+
+    }
+
+    public static String createJsonObjectString(List<CouplePostParam> couplePostParamList) {
+        String jsonObjectString = null;
+        for (CouplePostParam couplePostParam : couplePostParamList) {
+            if (jsonObjectString == null)
+                jsonObjectString = "{\"" + couplePostParam.getKey() + "\":\"" + couplePostParam.getParam().replace("\n", " ").replace("\r", " ") + "\"";
+
+            else
+                jsonObjectString += ",\"" + couplePostParam.getKey().replace("\n", " ").replace("\r", " ") + "\":\"" + couplePostParam.getParam() + "\"";
+        }
+
+        if (jsonObjectString != null)
+            jsonObjectString += "}";
+
+        return jsonObjectString;
     }
 
 }

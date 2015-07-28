@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.udea.gamificacionapp.R;
+import co.edu.udea.gamificacionapp.entities.core.Concept;
 import co.edu.udea.gamificacionapp.entities.core.Phase;
 import co.edu.udea.gamificacionapp.entities.core.Question;
 import co.edu.udea.gamificacionapp.factories.interfaces.IPhaseFactory;
@@ -40,6 +41,7 @@ public class PhaseFactory implements IPhaseFactory {
         Phase phase = null;
         JSONArray questionJsonArray = null;
         List<Question> questionList = null;
+        JSONObject conceptJsonObject = null;
 
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
@@ -52,6 +54,7 @@ public class PhaseFactory implements IPhaseFactory {
                 phase.setStartDate(phaseJsonObject.getString(context.getString(R.string.startDate_key)));
                 phase.setEndDate(phaseJsonObject.getString(context.getString(R.string.endDate_key)));
                 phase.setObjectID(phaseJsonObject.getString(context.getString(R.string.object_id_key)));
+                phase.setPhaseType(phaseJsonObject.getString(context.getString(R.string.phase_type_key)));
                 phase.setIdentifier(phaseJsonObject.getString(context.getString(R.string.phase_identifier_key)));
                 questionJsonArray = phaseJsonObject.getJSONArray(context.getString(R.string.phase_quesions_key));
                 questionList = QuestionFactory.getInstance().getQuestionsFromJsonArray(questionJsonArray, context);
@@ -65,8 +68,21 @@ public class PhaseFactory implements IPhaseFactory {
                     break;
 
                 }
-
                 phase.setQuestionList(questionList);
+
+                conceptJsonObject = phaseJsonObject.getJSONObject(context.getString(R.string.concept_key));
+                Concept concept = ConceptFactory.getInstance().getConceptFromJsonObject(conceptJsonObject, context);
+                if(concept==null){
+                    phaseList = null;
+                    phaseJsonObject = null;
+                    phase = null;
+                    questionJsonArray = null;
+                    questionList = null;
+                    break;
+
+                }
+                phase.setConcept(concept);
+
                 phaseList.add(phase);
 
 

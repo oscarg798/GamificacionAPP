@@ -9,27 +9,29 @@ import co.edu.udea.gamificacionapp.controllers.abstracts.AbstractController;
 import co.edu.udea.gamificacionapp.dao.impl.PhaseDAO;
 import co.edu.udea.gamificacionapp.entities.utils.CouplePostParam;
 import co.edu.udea.gamificacionapp.factories.impl.UserFactory;
-import co.edu.udea.gamificacionapp.presentation.activities.PhasesIndexActivity;
 
 /**
- * Created by oscargallon on 15/07/15.
+ * Created by oscargallon on 28/07/15.
  */
-public class PhasesIndexController extends AbstractController {
+public class QuizActivityController extends AbstractController {
     /**
      * Contructor de la clase
      *
      * @param activity actividad a la cual pertenece el controlador
      */
-    public PhasesIndexController(Activity activity) {
+    public QuizActivityController(Activity activity) {
         super(activity);
     }
 
-    public void getPhasesFromBackEnd(String activityID, String conceptID) {
+    public void sendRepliesToBackEnd(String phaseID, String activityID, String conceptID
+            , String jsonArrayReplies) {
 
-        List<CouplePostParam> couplePostParams = new ArrayList<CouplePostParam>();
+        List<CouplePostParam> couplePostParams = new ArrayList<>();
+
+
         CouplePostParam couplePostParam = new CouplePostParam();
-        couplePostParam.setKey("activity");
-        couplePostParam.setParam(activityID);
+        couplePostParam.setKey("phase");
+        couplePostParam.setParam(phaseID);
         couplePostParams.add(couplePostParam);
 
         couplePostParam = new CouplePostParam();
@@ -38,19 +40,22 @@ public class PhasesIndexController extends AbstractController {
         couplePostParams.add(couplePostParam);
 
         couplePostParam = new CouplePostParam();
+        couplePostParam.setKey("activity");
+        couplePostParam.setParam(activityID);
+        couplePostParams.add(couplePostParam);
+
+        couplePostParam = new CouplePostParam();
         couplePostParam.setKey("concept");
         couplePostParam.setParam(conceptID);
         couplePostParams.add(couplePostParam);
 
+        couplePostParam = new CouplePostParam();
+        couplePostParam.setKey("replies");
+        couplePostParam.setParam(jsonArrayReplies);
+        couplePostParams.add(couplePostParam);
+
         PhaseDAO phaseDAO = new PhaseDAO(this);
-        phaseDAO.getPhasesFromBackEnd(couplePostParams);
+        phaseDAO.sendPhaseReplies(couplePostParams);
 
     }
-
-    public void fillLvPhases() {
-        PhasesIndexActivity phasesIndexActivity = (PhasesIndexActivity) getActivity();
-        phasesIndexActivity.fillLvPhases();
-    }
-
-
 }
