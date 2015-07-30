@@ -10,12 +10,20 @@
     tools:context="co.edu.udea.gamificacionapp.presentation.activities.LoginActivity">
 
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/title" />
+
     <EditText
         android:id="@+id/txt_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:ems="10"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:hint="Cedula"
         android:inputType="text" />
@@ -26,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:ems="10"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:hint="Password"
         android:inputType="textPassword" />
@@ -41,6 +50,9 @@
             android:layout_height="wrap_content"
             android:text="Iniciar Sesión"
             android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"
+            android:background="@color/color_primary"
             android:id="@+id/btn_log_in"
             android:layout_gravity="center_horizontal" />
 
@@ -49,7 +61,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Registro"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
             android:layout_weight="1"
+            android:background="@color/color_primary"
             android:id="@+id/btn_sign_up"
             android:layout_gravity="center_horizontal" />
 

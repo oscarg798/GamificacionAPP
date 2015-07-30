@@ -14,6 +14,7 @@
         android:id="@+id/txt_fullname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:hint="Nombre" />
@@ -22,6 +23,7 @@
         android:id="@+id/txt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:hint="Email" />
@@ -30,6 +32,7 @@
         android:id="@+id/txt_id_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:hint="Cedula"
@@ -41,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
+        android:layout_margin="10dp"
         android:hint="Password"
         android:inputType="textPassword" />
 
@@ -48,6 +52,7 @@
         android:id="@+id/txt_password_confirmation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:hint="Password Confirmation"
@@ -55,8 +60,11 @@
 
     <Button
         android:id="@+id/btn_sign_up"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/color_primary"
+        android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
         android:text="Registrarse" />
 </LinearLayout>

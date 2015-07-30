@@ -55,7 +55,7 @@ public class ActivityFactory implements IActivityFactory {
                 jsonObjectAux = jsonObject.getJSONObject(ID);
                 activityJsonObject = jsonObjectAux.getJSONObject("activity");
                 activity = new Activity();
-                activity.setIdNumber(activityJsonObject.getInt(context.getString(R.string.id_number_key)));
+                activity.setIdNumber(activityJsonObject.getString(context.getString(R.string.id_number_key)));
                 activity.setName(activityJsonObject.getString(context.getString(R.string.name_key)));
                 activity.setStartDate(activityJsonObject.getString(context.getString(R.string.startDate_key)));
                 activity.setEndDate(activityJsonObject.getString(context.getString(R.string.endDate_key)));

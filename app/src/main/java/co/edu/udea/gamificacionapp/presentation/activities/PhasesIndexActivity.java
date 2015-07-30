@@ -32,6 +32,7 @@ public class PhasesIndexActivity extends AppCompatActivity {
     }
 
     public void initComponents() {
+        getSupportActionBar().setTitle("Fases");
         phasesIndexController = new PhasesIndexController(this);
         lvPhases = (ListView) findViewById(R.id.lv_phases);
         String activityID = getIntent().getExtras().getString("activityID");

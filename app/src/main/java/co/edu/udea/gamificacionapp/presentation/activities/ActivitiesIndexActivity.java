@@ -38,6 +38,7 @@ public class ActivitiesIndexActivity extends ActionBarActivity {
     }
 
     public void initComponents() {
+        getSupportActionBar().setTitle("Actividades");
         activitiesIndexController = new ActivitiesIndexController(this);
         lvActivities = (ListView) findViewById(R.id.lv_activities);
         activitiesIndexController.getActivities();

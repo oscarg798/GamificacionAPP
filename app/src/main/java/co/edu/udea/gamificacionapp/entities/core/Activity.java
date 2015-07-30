@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Activity {
 
-    private int idNumber;
+    private String idNumber;
     private String name;
     private String startDate;
     private String endDate;
@@ -15,11 +15,11 @@ public class Activity {
     private List<Concept> conceptList;
     private String objectId;
 
-    public int getIdNumber() {
+    public String getIdNumber() {
         return idNumber;
     }
 
-    public void setIdNumber(int idNumber) {
+    public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
     }
 

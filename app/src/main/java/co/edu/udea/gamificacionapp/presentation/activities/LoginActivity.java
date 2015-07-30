@@ -29,6 +29,8 @@ public class LoginActivity extends ActionBarActivity {
     }
 
     public void initComponents() {
+        getSupportActionBar().setTitle("Inicio de Sesión");
+
         txtUsername = (EditText) findViewById(R.id.txt_username);
         txtPassword = (EditText) findViewById(R.id.txt_password);
         btnLogIn = (Button) findViewById(R.id.btn_log_in);

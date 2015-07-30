@@ -87,7 +87,7 @@ public class ResponseQuizFragment extends Fragment {
                         it = null;
                         break;
                     }
-                    couplePostParamsAux = new ArrayList<CouplePostParam>();
+                    couplePostParamsAux = new ArrayList<>();
                     couplePostParam = new CouplePostParam();
                     couplePostParam.setKey("reply");
                     couplePostParam.setParam(entry.getValue().getText().toString());
@@ -107,7 +107,7 @@ public class ResponseQuizFragment extends Fragment {
 
                     quizActivityController.sendRepliesToBackEnd(quizActivity.getPhase().getObjectID(),
                             quizActivity.getPhase().getActivityID(), quizActivity.getPhase().getConcept()
-                                    .getObjectId(), jsonArrayString);
+                                    .getObjectId(), jsonArrayString,quizActivity.getPhase().getPhaseType() );
                 }
 
             }

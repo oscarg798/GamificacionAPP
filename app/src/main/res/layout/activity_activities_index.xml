@@ -18,6 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lv_activities"
+        android:footerDividersEnabled="true"
+        android:dividerHeight="2dp"
+        android:headerDividersEnabled="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 </LinearLayout>

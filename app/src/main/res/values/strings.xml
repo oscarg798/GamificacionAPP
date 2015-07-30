@@ -51,7 +51,7 @@
 
 
     <!--TODO URLS-->
-    <string name="base_url">http://192.168.1.52:1339</string>
+    <string name="base_url">http://45.55.6.15:1339</string>
     <string name="activities_index_url">/activity/mobileIndex</string>
     <string name="get_concept_of_activity_url"></string>
     <string name="title_activity_show_activity_info">ShowActivityInfoActivity</string>

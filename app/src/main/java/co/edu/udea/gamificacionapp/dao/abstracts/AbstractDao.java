@@ -11,6 +11,7 @@ import co.edu.udea.gamificacionapp.R;
 import co.edu.udea.gamificacionapp.controllers.QuizActivityController;
 import co.edu.udea.gamificacionapp.controllers.abstracts.AbstractController;
 import co.edu.udea.gamificacionapp.presentation.activities.PhasesIndexActivity;
+import co.edu.udea.gamificacionapp.presentation.activities.QuizActivity;
 import co.edu.udea.gamificacionapp.util.ErrorMessageHandler;
 
 
@@ -74,27 +75,42 @@ public abstract class AbstractDao {
                     try {
                         String message = jsonObjectResponse.getString(getAbstractController().getActivity()
                                 .getResources().getString(R.string.message_key));
-                        if(message!=null && message.equals("600")){
+                        if (message != null && message.equals("600")) {
 
                             DialogInterface.OnClickListener onClickListener =
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
+                                            if (((QuizActivity) ((QuizActivityController) getAbstractController()).getActivity()
+                                            ).getPhase().getPhaseType().equals("1"))
+                                                ((QuizActivityController) getAbstractController()).reloadPhases();
+
                                             getAbstractController().changeActivityWithExtrasList(
-                                                    PhasesIndexActivity.class,null
+                                                    PhasesIndexActivity.class, null
                                             );
                                         }
                                     };
 
-                            if (getAbstractController() instanceof QuizActivityController){
-                                getAbstractController().showAlertDialogWithTwoCustomOnClickListener(
-                                        "Alerta","Respuestas guardadas Correctamente",
-                                        onClickListener,null,"Aceptar",null);
+                            if (getAbstractController() instanceof QuizActivityController) {
+                                if (((QuizActivity) ((QuizActivityController) getAbstractController()).getActivity()
+                                ).getPhase().getPhaseType().equals("3")){
+                                    getAbstractController().showAlertDialogWithTwoCustomOnClickListener(
+                                            "Alerta", "Respuestas guardadas Correctamente, Por completra " +
+                                                    "una actividad obtienes 10 Puntos",
+                                            onClickListener, null, "Aceptar", null);
+                                }else{
+                                    getAbstractController().showAlertDialogWithTwoCustomOnClickListener(
+                                            "Alerta", "Respuestas guardadas Correctamente, tiene " +
+                                                    "5 puntos",
+                                            onClickListener, null, "Aceptar", null);
+                                }
+
+
                             }
-                        }else
-                        getAbstractController().showAlertDialogWithTwoCustomOnClickListener(
-                                getAbstractController().getActivity().getResources().getString(R.string.alert_default_title),
-                                ErrorMessageHandler.getMessageFromCode(message), null, null, null, null);
+                        } else
+                            getAbstractController().showAlertDialogWithTwoCustomOnClickListener(
+                                    getAbstractController().getActivity().getResources().getString(R.string.alert_default_title),
+                                    ErrorMessageHandler.getMessageFromCode(message), null, null, null, null);
 
                     } catch (JSONException e1) {
                         e1.printStackTrace();
@@ -127,9 +143,9 @@ public abstract class AbstractDao {
 
     public void showErrorMessage(String title, String message) {
 
-        try{
+        try {
             getAbstractController().dismissProgressDialog();
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         if (title == null && message == null)

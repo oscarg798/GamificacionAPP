@@ -31,6 +31,7 @@ public class SignUpActivity extends ActionBarActivity {
 
 
     public void initComponents() {
+        getSupportActionBar().setTitle("Registro de Usuarios");
         signUpController = new SignUpController(this);
         txtFullname = (EditText) findViewById(R.id.txt_fullname);
         txtEmail = (EditText) findViewById(R.id.txt_email);

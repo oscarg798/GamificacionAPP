@@ -12,6 +12,7 @@ import co.edu.udea.gamificacionapp.R;
 import co.edu.udea.gamificacionapp.controllers.QuizActivityController;
 import co.edu.udea.gamificacionapp.entities.core.Phase;
 import co.edu.udea.gamificacionapp.presentation.fragments.ResponseQuizFragment;
+import co.edu.udea.gamificacionapp.presentation.fragments.SpinnerQuestionFragment;
 
 public class QuizActivity extends ActionBarActivity {
 
@@ -28,6 +29,7 @@ public class QuizActivity extends ActionBarActivity {
     }
 
     public void initComponents() {
+        getSupportActionBar().setTitle("Soluciona la Fase");
         quizActivityController = new QuizActivityController(this);
         if (getIntent().getExtras() != null) {
             phase = (Phase) getIntent().getExtras().getSerializable(getString(R.string.phase_key));
@@ -35,6 +37,13 @@ public class QuizActivity extends ActionBarActivity {
                 case "0": {
                     this.fragment = new ResponseQuizFragment();
                     break;
+                }
+                case "1": {
+                    this.fragment = new ResponseQuizFragment();
+                    break;
+                }
+                case "2": {
+                    this.fragment = new SpinnerQuestionFragment();
                 }
             }
             changeFragment(fragment);
