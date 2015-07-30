@@ -4,15 +4,46 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import co.edu.udea.gamificacionapp.R;
+import co.edu.udea.gamificacionapp.entities.core.Activity;
 
 public class ShowActivityInfoActivity extends ActionBarActivity {
+
+    private TextView txtIdNumber;
+    private TextView txtActivityName;
+    private TextView txtActivityDescription;
+    private TextView txtStartDate;
+    private TextView txtEndDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_activity_info);
+        initComponents();
+    }
+
+    public void initComponents() {
+        getSupportActionBar().setTitle("Información Actividad");
+
+        txtIdNumber = (TextView) findViewById(R.id.txt_id_number);
+        txtActivityName = (TextView) findViewById(R.id.txt_activity_name);
+        txtActivityDescription = (TextView) findViewById(R.id.txt_activity_description);
+        txtStartDate = (TextView) findViewById(R.id.txt_start_date);
+        txtEndDate = (TextView) findViewById(R.id.txt_end_date);
+
+        Activity activity = (Activity) getIntent().getExtras().getSerializable("activity");
+        txtIdNumber.setText(activity.getIdNumber());
+        txtActivityName.setText(activity.getName());
+        txtActivityDescription.setText(activity.getDescription());
+        txtStartDate.setText(activity.getStartDate());
+        txtEndDate.setText(activity.getEndDate());
+
+
     }
 
     @Override

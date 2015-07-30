@@ -15,6 +15,8 @@ import co.edu.udea.gamificacionapp.presentation.activities.PhasesIndexActivity;
  * Created by oscargallon on 15/07/15.
  */
 public class PhasesIndexController extends AbstractController {
+
+    private int hasBeenCalled= 0;
     /**
      * Contructor de la clase
      *
@@ -25,7 +27,7 @@ public class PhasesIndexController extends AbstractController {
     }
 
     public void getPhasesFromBackEnd(String activityID, String conceptID) {
-
+        hasBeenCalled +=1;
         List<CouplePostParam> couplePostParams = new ArrayList<CouplePostParam>();
         CouplePostParam couplePostParam = new CouplePostParam();
         couplePostParam.setKey("activity");
@@ -52,5 +54,11 @@ public class PhasesIndexController extends AbstractController {
         phasesIndexActivity.fillLvPhases();
     }
 
+    public int isHasBeenCalled() {
+        return hasBeenCalled;
+    }
 
+    public void setHasBeenCalled(int hasBeenCalled) {
+        this.hasBeenCalled = hasBeenCalled;
+    }
 }

@@ -1,11 +1,12 @@
 package co.edu.udea.gamificacionapp.entities.core;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by oscargallon on 3/06/15.
  */
-public class Activity {
+public class Activity implements Serializable {
 
     private String idNumber;
     private String name;

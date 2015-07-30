@@ -60,9 +60,24 @@ public class PhasesIndexActivity extends AppCompatActivity {
                 couplePostParam.setObjectParam(phase);
                 couplePostParamList.add(couplePostParam);
                 phasesIndexController.changeActivityWithExtrasList(QuizActivity.class, couplePostParamList);
+                phasesIndexController.setHasBeenCalled(0);
             }
         });
 
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (phasesIndexController != null) {
+            String activityID = getIntent().getExtras().getString("activityID");
+            String conceptID = getIntent().getExtras().getString("conceptID");
+            if (activityID != null && conceptID != null && phasesIndexController.isHasBeenCalled() == 0) {
+                phasesIndexController.getPhasesFromBackEnd(activityID, conceptID);
+            }
+
+        }
     }
 
     @Override

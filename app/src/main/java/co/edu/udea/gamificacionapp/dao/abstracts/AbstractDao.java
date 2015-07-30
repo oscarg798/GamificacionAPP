@@ -81,9 +81,6 @@ public abstract class AbstractDao {
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
-                                            if (((QuizActivity) ((QuizActivityController) getAbstractController()).getActivity()
-                                            ).getPhase().getPhaseType().equals("1"))
-                                                ((QuizActivityController) getAbstractController()).reloadPhases();
 
                                             getAbstractController().changeActivityWithExtrasList(
                                                     PhasesIndexActivity.class, null
@@ -93,7 +90,7 @@ public abstract class AbstractDao {
 
                             if (getAbstractController() instanceof QuizActivityController) {
                                 if (((QuizActivity) ((QuizActivityController) getAbstractController()).getActivity()
-                                ).getPhase().getPhaseType().equals("3")){
+                                ).getPhase().getPhaseType().equals("2")){
                                     getAbstractController().showAlertDialogWithTwoCustomOnClickListener(
                                             "Alerta", "Respuestas guardadas Correctamente, Por completra " +
                                                     "una actividad obtienes 10 Puntos",

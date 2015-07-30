@@ -57,7 +57,11 @@ public abstract class AbstractController {
         progressDialog.setCancelable(false);
         progressDialog.setTitle(title);
         progressDialog.setMessage(message);
-        progressDialog.show();
+        try {
+            progressDialog.show();
+        }catch (Exception e){
+
+        }
 
     }
 

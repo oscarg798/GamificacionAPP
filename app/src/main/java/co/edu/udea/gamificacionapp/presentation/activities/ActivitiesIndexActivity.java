@@ -100,6 +100,21 @@ public class ActivitiesIndexActivity extends ActionBarActivity {
             }
         });
 
+        lvActivities.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                List<CouplePostParam> couplePostParamList = new ArrayList<>();
+                CouplePostParam couplePostParam = new CouplePostParam();
+                couplePostParam.setKey("activity");
+                couplePostParam.setObjectParam(((Activity) adapterView.getAdapter().getItem(i)));
+                couplePostParamList.add(couplePostParam);
+                activitiesIndexController.changeActivityWithExtrasList(ShowActivityInfoActivity.class,
+                        couplePostParamList);
+
+                return false;
+            }
+        });
+
     }
 
 
